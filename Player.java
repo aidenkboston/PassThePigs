@@ -7,7 +7,7 @@ public class Player {
         name = n; 
     }
     public String getName() {
-        retrun name;
+        return name;
     }
     public String getStrategy() {
         return strategy;

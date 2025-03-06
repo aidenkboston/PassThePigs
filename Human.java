@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Human extends Player {
     Scanner scan = new Scanner(System.in);
     
