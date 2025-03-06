@@ -22,8 +22,8 @@ public class Pigs {
 
     public int addScore() { //casts doublt to int for to allow for correct logic when rolling only one "Dot" or "No Dot"
         double score = 0;
-        String pig1 = rollPig();
-        String pig2 = rollPig();
+        pig1 = rollPig();
+        pig2 = rollPig();
         String[] pigsArr = {pig1, pig2}; 
 
         if ((pig1.equals("No Dot") && pig2.equals("Dot")) || (pig2.equals("No Dot") && pig1.equals("Dot"))) {
