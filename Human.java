@@ -6,14 +6,15 @@ public class Human extends Player {
     
     public Human(String n) {
         super(n);
+        strategy = "Natural Intellect";
     }
 
     public boolean wantsToRoll(int myScore, int handScore, ArrayList<Integer> otherScores, int winningScore) {
         String input;
-        System.out.print("your score is: " + myScore + " | ");
-        System.out.print("your hand score is: " + handScore + " | ");
-        System.out.println("score to win is: " + winningScore + " | ");
-        System.out.println("Do you want to keep rolling (yes/no)");
+        System.out.print("Your score is: " + myScore + " | ");
+        System.out.print("Your hand score is: " + handScore + " | ");
+        System.out.println("Points needed to win are: " + (winningScore - myScore) + " | ");
+        System.out.println("Do you want to roll (yes/no)");
         input = scan.nextLine();
 
         if (input.equals("yes")) {

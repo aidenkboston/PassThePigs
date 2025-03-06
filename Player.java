@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Player {
     private String name;
-    private String strategy;
+    public String strategy;
 
     public Player(String n) {
         name = n; 

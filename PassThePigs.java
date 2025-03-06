@@ -14,6 +14,7 @@ public class PassThePigs {
         boolean playing = true;
         players.add(new Human("Aiden"));
         players.add(new GenericBot("GenericBot"));
+        players.add(new RandomBot("RandomBot"));
         for (int i = 0; i < players.size(); i++) {
             scores.add(0);
         }
@@ -22,19 +23,24 @@ public class PassThePigs {
             for (int i = 0; i < players.size(); i++) {
                 printBoard(players, scores);
                 int handScore = 0;
-                while (players.get(i).wantsToRoll(scores.get(i), handScore, scores, winningScore)) {
+                while ((players.get(i)).wantsToRoll(scores.get(i), handScore, scores, winningScore)) {
                     int rolledPoints = pig.addScore(); 
                     handScore += rolledPoints;
                     if (rolledPoints == 0) {
                         System.out.println(players.get(i).getName() + " rolls a " + pig.getPig1() + " and a " + pig.getPig2() + " for a roll of " + rolledPoints + ". That's a PIG OUT!");
+                        handScore = 0;
                         break;
                     } else {
                         System.out.println(players.get(i).getName() + " rolls a " + pig.getPig1() + " and a " + pig.getPig2() + " for a roll of " + rolledPoints + ". Handscore is now: " + handScore); 
                     }
                 }
-                scores.set(i, handScore);
+                System.out.println(players.get(i).getName() + " pigs out or passes.");
+                scores.set(i, scores.get(i) + handScore);
+
                 if (scores.get(i) >= winningScore) {
+                    System.out.println(players.get(i).getName() + " has won! They used strategy: " + players.get(i).getStrategy());
                     playing = false;
+                    return;
                 }
             }
         }
