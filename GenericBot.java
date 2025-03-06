@@ -1,22 +1,20 @@
 import java.util.ArrayList;
 
-public class Player {
-    private String name;
-    private String strategy;
-
-    public Player(String n) {
-        name = n; 
+public class GenericBot extends Player {
+    public GenericBot(String n) {
+        super(n);
+        super.strategy = "Roll Twice";
     }
 
     public String getName() {
-        return name;
+        return super.getName();
     }
 
     public String getStrategy() {
-        return strategy;
+        return super.strategy;
     }
-    
+
     public boolean wantsToRoll(int myScore, int handScore, ArrayList<Integer> otherScores, int winningScore) {
         return true;
-    }    
+    }
 }
