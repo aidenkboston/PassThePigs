@@ -15,6 +15,7 @@ public class PassThePigs {
         players.add(new Human("Aiden"));
         players.add(new GenericBot("GenericBot"));
         players.add(new RandomBot("RandomBot"));
+        players.add(new SmartBot("Smartbot"));
         for (int i = 0; i < players.size(); i++) {
             scores.add(0);
         }
@@ -23,18 +24,24 @@ public class PassThePigs {
             for (int i = 0; i < players.size(); i++) {
                 printBoard(players, scores);
                 int handScore = 0;
+                boolean pigOut = false;
                 while ((players.get(i)).wantsToRoll(scores.get(i), handScore, scores, winningScore)) {
                     int rolledPoints = pig.addScore(); 
                     handScore += rolledPoints;
                     if (rolledPoints == 0) {
                         System.out.println(players.get(i).getName() + " rolls a " + pig.getPig1() + " and a " + pig.getPig2() + " for a roll of " + rolledPoints + ". That's a PIG OUT!");
                         handScore = 0;
+                        pigOut = true;
                         break;
                     } else {
                         System.out.println(players.get(i).getName() + " rolls a " + pig.getPig1() + " and a " + pig.getPig2() + " for a roll of " + rolledPoints + ". Handscore is now: " + handScore); 
                     }
                 }
-                System.out.println(players.get(i).getName() + " pigs out or passes.");
+                if (pigOut) {
+                    pigOut = false;
+                } else {
+                    System.out.println(players.get(i).getName() + " passes.");
+                }
                 scores.set(i, scores.get(i) + handScore);
 
                 if (scores.get(i) >= winningScore) {
